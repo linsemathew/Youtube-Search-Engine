@@ -17,7 +17,7 @@ $(function(){
 				width: '45%'
 			}, 400);
 			$(icon).animate({
-				right: '520px' 
+				right: '600px' 
 			}, 400);
 		}
 	});
