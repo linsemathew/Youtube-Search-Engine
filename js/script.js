@@ -21,4 +21,28 @@ $(function(){
 			}, 400);
 		}
 	});
+
+	$('#search-form').submit(function(e){
+		e.preventDefault()
+	});	
 })
+
+var mykey = config.MY_KEY;
+
+function search(){
+	$('#results').html('');
+	$('#buttons').html('');
+	q = $('#query').val();
+	$.get(
+		"https://www.googleapis.com/youtube/v3/search",{
+			part: 'snippet, id',
+			q: q,
+			type: 'video',
+			key: mykey },
+			function(data){
+				var nextPageToken = data.nextPageToken;
+				var prevPageToken = data.prevPageToken;
+				console.log(data);
+			}
+	);
+}
