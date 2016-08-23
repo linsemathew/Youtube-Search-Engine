@@ -43,6 +43,11 @@ function search(){
 				var nextPageToken = data.nextPageToken;
 				var prevPageToken = data.prevPageToken;
 				console.log(data);
+
+				$.each(data.items, function(i, item){
+					var output = getOutput(item);
+					$('#results').append(output)
+				});
 			}
 	);
 }
