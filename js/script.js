@@ -51,3 +51,7 @@ function search(){
 			}
 	);
 }
+
+function getOut(){
+	
+}
