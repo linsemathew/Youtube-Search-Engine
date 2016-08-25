@@ -46,12 +46,32 @@ function search(){
 
 				$.each(data.items, function(i, item){
 					var output = getOutput(item);
-					$('#results').append(output)
+					$('#results').append(output);
 				});
 			}
 	);
 }
 
-function getOut(){
-	
+function getOutput(item){
+	var videoId = item.id.videoId;
+	var title = item.snippet.title;
+	var description = item.snippet.description;
+	var thumb = item.snippet.thumbnails.high.url;
+	var channelTitle = item.snippet.channelTitle;
+	var date = item.snippet.publishedAt;
+
+	var output = '<li>' +
+	'<div class="list-left">' +
+	'<img src="'+thumb+'">' +
+	'</div>' +
+	'<div class="list-right">' +
+	'<h3>'+title+'</h3>'
+	'<small>By <span class="cTitle">'+channelTitle+'</span> on '+date+'</small>' +
+	'<p>'+description+'</p>' +
+	'</div>' +
+	'</li>' +
+	'<div class="clearfix"></div>' +
+	'';
+
+	return output
 }
