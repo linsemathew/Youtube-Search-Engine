@@ -17,7 +17,7 @@ a{
 }
 
 #container{
-	width:740px;
+	width:80%;
 	background:#fff;
 	margin:auto;
 }
@@ -80,7 +80,7 @@ section{
 
 #search-btn{
 	position: absolute;
-	right: 600px;
+	right: 57%;
 	top: 5px;
 	height: 32px;
 	width: 32px;

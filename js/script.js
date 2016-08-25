@@ -17,7 +17,7 @@ $(function(){
 				width: '45%'
 			}, 400);
 			$(icon).animate({
-				right: '600px' 
+				right: '57%' 
 			}, 400);
 		}
 	});
@@ -78,4 +78,8 @@ function getOutput(item){
 	'';
 
 	return output
+}
+
+function getButtons(){
+
 }
