@@ -78,6 +78,68 @@ function getOutput(item){
 	return output
 }
 
+function nextPage(){
+
+	var token = $('#next-button').data('token')
+	var q = $('next-button').data('q')
+	$('#results').html('');
+	$('#buttons').html('');
+	q = $('#query').val();
+	$.get(
+		"https://www.googleapis.com/youtube/v3/search",{
+			part: 'snippet, id',
+			q: q,
+			pageToken: token,
+			type: 'video',
+			key: mykey },
+			function(data){
+				var nextPageToken = data.nextPageToken;
+				var prevPageToken = data.prevPageToken;
+				console.log(data);
+
+				$.each(data.items, function(i, item){
+					var output = getOutput(item);
+					$('#results').append(output);
+				});
+
+				var buttons = getButtons(prevPageToken, nextPageToken);
+
+				$('#buttons').append(buttons)
+			}
+	);
+}
+
+function prevPage(){
+
+	var token = $('#prev-button').data('token')
+	var q = $('prev-button').data('q')
+	$('#results').html('');
+	$('#buttons').html('');
+	q = $('#query').val();
+	$.get(
+		"https://www.googleapis.com/youtube/v3/search",{
+			part: 'snippet, id',
+			q: q,
+			pageToken: token,
+			type: 'video',
+			key: mykey },
+			function(data){
+				var nextPageToken = data.nextPageToken;
+				var prevPageToken = data.prevPageToken;
+				console.log(data);
+
+				$.each(data.items, function(i, item){
+					var output = getOutput(item);
+					$('#results').append(output);
+				});
+
+				var buttons = getButtons(prevPageToken, nextPageToken);
+
+				$('#buttons').append(buttons)
+			}
+	);
+}
+
 function getButtons(prevPageToken, nextPageToken){
 	if(!prevPageToken){
 		var btnoutput = '<div class="button-container">' +
